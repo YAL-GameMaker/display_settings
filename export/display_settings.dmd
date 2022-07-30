@@ -1,0 +1,64 @@
+```set template default.html```
+```set title display_settings cheat sheet```
+```set autoapi ext```
+```set intro
+This is a "cheat sheet" for "display_settings" extension by YellowAfterlife.
+The extension can be found on [itch.io](https://yellowafterlife.itch.io/gamemaker-display_settings).
+```
+#[display_set_all(width, height, frequency, coldepth, flags)->bool]() {
+	Changes one or more display parameters.
+	
+	Width and height are in pixels.
+	
+	Frequency is in hertz (e.g. 60).
+	
+	Color depth can be 16 or 32 (I don't suggest touching it).
+	
+	Flags can be:
+	
+	--{
+	- `0`  
+	  Default behaviour (change and that's it)
+	- `display_settings_flag_fullscreen`  
+	  Uses `CDS_FULLSCREEN` - settings will _generally_ revert upon exiting the game.
+	- `display_settings_flag_test`  
+	  Uses `CDS_TEST` - tests whether the combination of settings is supported without applying.  
+	  (`display_test_all` is included as a convenience shorthand and uses this)
+	}
+	
+	`width`/`height`/`frequency`/`coldepth` can be set to `0` to leave them untouched.
+	
+	Returns whether successful.
+	
+	Examples:
+	```gml
+	// set to 1920x1080@60hz
+	display_set_all(1920, 1080, 60, 0, 0)
+	```
+	```gml
+	// error handling
+	if (!display_set_all(1920, 1080, 75, 0, 0)) {
+		show_message("Couldn't change to 1920x1080@75Hz!");
+	}
+	```
+}
+#[display_test_all(width, height, frequency, coldepth)->bool]() {
+	A shorthand for `display_set_all(width, height, frequency, coldepth, display_settings_flag_test)`.
+	
+	Example:
+	```gml
+	// sets refresh rate to 75Hz if supported, to 60Hz otherwise
+	if (display_test_all(0, 0, 75, 0)) {
+	    display_set_frequency(75);
+	} else display_set_frequency(60);
+	```
+}
+#[display_set_size(width, height)->bool]() {
+	A shorthand for `display_set_all(width, height, 0, 0, 0)`.
+}
+#[display_set_frequency(frequency)->bool]() {
+	A shorthand for `display_set_all(0, 0, frequency, 0, 0)`.
+}
+#[display_set_colordepth(frequency)->bool]() {
+	A shorthand for `display_set_all(0, 0, frequency, 0, 0)`.
+}

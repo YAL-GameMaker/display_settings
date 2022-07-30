@@ -1,0 +1,8 @@
+display_settings-for-GMS1/*
+
+display_settings-for-GMS2/*
+!display_settings-for-GMS2/assetpackage.yy
+
+display_settings-for-GMS2.3+/*
+!display_settings-for-GMS2.3+/display_settings_23.yyp
+!display_settings-for-GMS2.3+/metadata.json

@@ -1,0 +1,9 @@
+{
+  "extensionId": {
+    "name": "display_settings",
+    "path": "extensions/display_settings/display_settings.yy"
+  },
+  "resourceVersion": "1.0",
+  "resourceType": "GMExtensionConfigSet",
+  "configurables": null
+}
